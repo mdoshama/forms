@@ -1,136 +1,163 @@
 
-<div class="container">
-  <h1 class="text-center">Form</h1>
-  <form [formGroup]="reactiveForm" (ngSubmit)="submitForm()">
-    <div class="col-md-3">
-      <label>Name</label>
-      <input type="text" class="form-control" formControlName="name" id="name">
-      <small *ngIf="reactiveForm.get('name').touched &&
-      reactiveForm.get('name').invalid" class="small">*Name is required</small>
+<header class="bg-dark text-white fixed-top">
+  <nav class="navbar navbar-expand-md navbar-dark container">
+    <a class="navbar-brand" href="#">Home</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" (click)="scrollToElement('about')">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="scrollToElement('skills')">Skills</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="scrollToElement('experience')">Experience</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="scrollToElement('contact')">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="confirmDownload()">Resume</a>
+        </li>
+
+        <!-- Social Media Icons -->
+        <li class="nav-item">
+          <a class="nav-link" href="https://www.linkedin.com/in/md-oshama-4b2152302/" target="_blank" aria-label="LinkedIn">
+            <i class="fab fa-linkedin"></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="mailto:mail@codebyoshama.com" aria-label="Email">
+            <i class="fas fa-envelope"></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://www.instagram.com/codebyoshama" target="_blank" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+
+
+<section id="hero" class="d-flex align-items-center bg-light text-center">
+  <div class="container">
+    <h1 class="hero-title">Hi, I'm MD OSHAMA</h1>
+    <p class="hero-description">Full-Stack Developer</p>
+  </div>
+</section>
+
+
+
+<section id="about" class="container my-5 py-5">
+  <div class="row">
+    <div class="col-md-6">
+      <h2>About Me</h2>
+      <p>Skilled Full-Stack Developer with a strong background in both front-end and
+        back-end development. Equipped with a Master's in Computer Science and
+        extensive hands-on experience, I specialize in crafting user-friendly applications
+        using technologies like JavaScript, Angular, Spring-Boot, and SQL. I am dedicated to
+        innovation, teamwork, and delivering impactful solutions that drive business growth.
+      </p>
+    </div>
+    <div class="col-md-6">
+      <img src="assets/profile.jpg"
+           class="img-fluid rounded-circle"
+           alt="Profile Picture"
+           style="width: 400px; height: 400px; object-fit: cover;">
     </div>
 
-    <div class="col-md-3">
-      <label for="email">Email</label>
-      <input type="email" class="form-control" formControlName="email" id="email">
-      <small *ngIf="reactiveForm.get('email').touched &&
-      reactiveForm.get('email').invalid" class="small">*Email is required</small>
-    </div>
-
-    <!-- Radio -->
-
-    <div class="mt-2">
-      <span class="m-lg-2">
-        <input class="m-lg-2"checked type="radio" formControlName="gender" value="male">
-        <label>Male</label>
-      </span>
-      <span class="m-lg-2">
-        <input class="m-lg-2" type="radio" formControlName="gender" value="female">
-        <label> Female </label>
-      </span>
-      <span>
-        <input class="m-lg-2" type="radio" formControlName="gender" value="other">
-        <label>Other</label>
-      </span>
-
-    </div>
-
-    <!-- Select -->
-
-    <div   class="col-md-3 mt-2">
-      <label for="course">Course</label>
-      <select class="form-control mt-1" id="course"  formControlName = "course" >
-        <option selected >plese select</option>
-        <option  value="java">Java</option>
-        <option value="python">Python</option>
-        <option value="javascript">JavaScript</option>
-      </select>
-    </div>
+  </div>
+</section>
 
 
-
-    <!-- Form Group -->
-    <div class="container" formGroupName="address">
-      <h1>Address</h1>
-      <div class="col-md-2">
-        <label for="city">city</label>
-        <input class="form-control" type="text" id="city" formControlName="city">
+<section id="skills" class="bg-body-secondary text-black py-5">
+  <div class="container">
+    <h2 class="text-center text-black">Skills</h2>
+    <div class="row text-center mt-4">
+      <div class="col-md-3">
+        <h4>Frontend</h4>
+        <ul class="list-unstyled">
+          <li>Angular</li>
+          <li>HTML/CSS</li>
+          <li>JavaScript/TypeScript</li>
+        </ul>
       </div>
-
-      <div class="col-md-2">
-        <label for="country">Country</label>
-        <input class="form-control" type="text" id="country" formControlName="country">
-        <small *ngIf="reactiveForm.get('address.country').touched &&
-      reactiveForm.get('address.country').invalid" class="small">*Country is required</small>
+      <div class="col-md-3">
+        <h4>Backend</h4>
+        <ul class="list-unstyled">
+          <li>Spring-Boot</li>
+          <li>Java</li>
+          <li>RESTful APIs</li>
+        </ul>
       </div>
-    </div>
-    <hr>
-
-
-
-    <!-- Form Array -->
-<div class="container" >
-  <h1>Skills</h1>
-  <div class=" mt-2 column" formArrayName="skills" *ngFor="let control of reactiveForm.get('skills')['controls'];
-         let i = index"  >
-    <div class="row">
-      <div class="col-md-2">
-        <input placeholder="Add skills.." [formControlName]="i" class="form-control " type="text" >
-      </div>
-      <div class="col-md-2">
-        <button (click)="removeSkill(i)" type="button" class="btn btn-danger">Delete</button>
+      <div class="col-md-3">
+        <h4>Database & Others</h4>
+        <ul class="list-unstyled">
+          <li>MySQL</li>
+          <li>MongoDB</li>
+          <li>Docker</li>
+          <li>Git</li>
+        </ul>
       </div>
     </div>
   </div>
-  <button type="button" class="mt-2 btn btn-info" (click)="addSkills()">Add Skills</button>
-</div>
+</section>
 
 
 
-    <!-- Form Array and Form Form Group -->
 
 
-
-    <div class="container" formArrayName="experience">
-      <div class="container" *ngFor="let data of reactiveForm.get('experience')['controls'];
-       let i = index" [formGroupName]="i">
-<hr>
-        <h1>Experience {{i+1}}</h1>
-        <div class="row">
-          <div class="col-md-2">
-            <label for="companyName">Company Name</label>
-            <input class="form-control" id="companyName" formControlName="companyName">
-          </div>
-
-          <div class="col-md-2">
-            <label for="position">Position</label>
-            <input class="form-control" formControlName="position" id="position">
-          </div>
+<section id="experience" class="bg-light py-5">
+  <div class="container">
+    <h2 class="text-center">Experience</h2>
+    <div class="timeline">
+      <div class="timeline-item" *ngFor="let job of jobs">
+        <div class="timeline-content">
+          <h4>{{ job.title }} - {{ job.company }}</h4>
+          <p class="duration">{{ job.duration }}</p>
+          <p class="description">{{ job.description }}</p>
         </div>
-
-        <div class="row">
-          <div class="col-md-2">
-            <label for="startDate">start date</label>
-            <input type="date" formControlName="startDate" id="startDate">
-          </div>
-          <div class="col-md-2">
-            <label for="endDate">End Date</label>
-            <input type="date" formControlName="endDate" id="endDate">
-          </div>
-        </div>
-
-        <button (click)="deleteExperience(i)" type="button" class="btn btn-danger mt-3">Delete Experience</button>
       </div>
-
     </div>
+  </div>
+</section>
 
 
-    <button (click)="addExperience()" class="btn btn-info mt-2">Add Experience</button>
 
-
-
-    <div class="mt-4">
-      <button [disabled]="reactiveForm.invalid"  type="submit" class="btn btn-success">Submit</button>
+<section id="contact" class="container my-5 py-5">
+  <h2 class="text-center mb-4">Get in Touch</h2>
+  <div class="row justify-content-center">
+    <div class="col-md-8 text-center">
+      <p class="lead">Feel free to connect with me on social media or drop me an email.</p>
+      <div class="social-icons mt-4">
+        <a href="https://www.linkedin.com/in/md-oshama-4b2152302/" class="social-icon" target="_blank" aria-label="LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="mailto:your.mail@codebyoshama.com" class="social-icon" aria-label="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a href="https://www.instagram.com/codebyoshama" class="social-icon" target="_blank" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+      </div>
     </div>
+  </div>
+</section>
 
-  </form>
-</div>
+
+
+
+<footer class="bg-dark text-white text-center py-4">
+  <div class="container">
+    <p class="mb-0">© 2024. All rights reserved.</p>
+    <p class="mb-0">Crafted with <i class="fas fa-heart"></i> by MD OSHAMA</p>
+  </div>
+</footer>
+

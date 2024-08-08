@@ -5,14 +5,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {ReactiveFormsModule} from "@angular/forms";
 
+import { ScrollSpyModule } from 'ngx-scrollspy';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
     imports: [
         BrowserModule,
         AppRoutingModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+      ScrollSpyModule.forRoot()
     ],
   providers: [],
   bootstrap: [AppComponent]

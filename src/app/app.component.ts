@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit} from '@angular/core';
 import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
@@ -7,60 +7,63 @@ import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit{
-  reactiveForm: FormGroup ;
-
+  jobs: any[] = [];
+  projects: any[] = [];
   ngOnInit(): void {
-    this.reactiveForm = new FormGroup( {
-      name: new FormControl('', Validators.required),
-      email: new FormControl('', [Validators.required, Validators.email]),
-      gender: new FormControl('male'),
-      course: new FormControl('java'),
-      address: new FormGroup( {
-        city: new FormControl(''),
-        country: new FormControl('', Validators.required)
-      }),
-      skills : new FormArray( [
-          new FormControl('', Validators.required),
-        ]),
-      experience: new FormArray([
+    this.loadExperience();
+    this.loadProjects();
 
-      ])
+  }
 
-    })
+  loadExperience(): void {
+    // Example data; replace with real data or fetch from a service
+    this.jobs = [
+      {
+        title: 'Full-Stack Developer',
+        company: 'Solutions For Banking Private Limited',
+        duration: 'Jan 2021 - 2024',
+        description: 'Developed and maintained web applications using Angular, Spring-boot, MS-SQL Server.'
+      }
+    ];
+  }
+
+  loadProjects(): void {
+    // Example project data; replace with real data or fetch from a service
+    this.projects = [
+      {
+        name: 'Portfolio Website',
+        description: 'A personal portfolio website to showcase my projects and skills.',
+        image: 'assets/portfolio.jpg', // Replace with the path to your image
+        url: 'https://portfolio.example.com'
+      },
+      {
+        name: 'E-Commerce Platform',
+        description: 'A fully-featured e-commerce platform with user authentication and product management.',
+        image: 'assets/ecommerce.jpg', // Replace with the path to your image
+        url: 'https://ecommerce.example.com'
+      },
+      {
+        name: 'Chat Application',
+        description: 'Real-time chat application with features like group chats and notifications.',
+        image: 'assets/chat.jpg', // Replace with the path to your image
+        url: 'https://chat.example.com'
+      }
+      // Add more projects as needed
+    ];
+  }
+  constructor(private elRef: ElementRef) {}
+
+  scrollToElement(elementId: string): void {
+    const element = this.elRef.nativeElement.querySelector(`#${elementId}`);
+    element.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
   }
 
 
-  submitForm(): void {
-    if(this.reactiveForm.valid) {
-      console.log(this.reactiveForm.value.address.city)
+  confirmDownload() {
+    const confirmed = confirm("Do you want to download my resume?");
+    if (confirmed) {
+      window.location.href = 'assets/resume.pdf'; // Adjust path as needed
     }
-
-    console.log(this.reactiveForm)
-  }
-
-  addSkills() : void {
-    (<FormArray> this.reactiveForm.get('skills')).push(new FormControl(''))
-  }
-
-  removeSkill(index: number): void {
-    (<FormArray> this.reactiveForm.get('skills')).removeAt(index)
-  }
-
-
-  addExperience(): void {
-    const formGroup =   new FormGroup({
-      companyName: new FormControl(''),
-      position: new FormControl(''),
-      startDate: new FormControl(''),
-      endDate: new FormControl(''),
-    });
-
-    (<FormArray> this.reactiveForm.get('experience')).push(formGroup);
-  }
-
-  deleteExperience(index: number): void {
-    const formArray = <FormArray>this.reactiveForm.get('experience');
-    formArray.removeAt(index);
   }
 
 

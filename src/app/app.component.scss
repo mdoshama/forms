@@ -14,3 +14,353 @@ input.ng-invalid.ng-touched {
   color: red;
   font-weight: bold;
 }
+
+
+/* Example Styling for Timeline */
+.timeline {
+  position: relative;
+  padding: 1rem 0;
+}
+
+.timeline-item {
+  position: relative;
+  padding: 1rem;
+  border-left: 2px solid #007bff;
+  margin-bottom: 2rem;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -6px;
+  top: 0;
+  width: 12px;
+  height: 12px;
+  background-color: #007bff;
+  border-radius: 50%;
+}
+
+.timeline-item h4 {
+  margin-top: 0;
+}
+
+.timeline-item p {
+  margin-bottom: 0.5rem;
+}
+
+
+/* Example Styling for Project Cards */
+.card {
+  border: none;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-body {
+  text-align: center;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+/* Skills Section Styling */
+#skills {
+  background-color: #dbdbdc; /* Dark background color */
+  color: #0a0909; /* White text color */
+  padding-top: 5rem; /* Top padding to adjust for fixed navbar */
+}
+
+#m-color {
+  color: black;
+}
+#skills h2 {
+  font-size: 2.5rem; /* Larger font size for the section title */
+  font-weight: bold;
+  margin-bottom: 2rem; /* Space below the title */
+}
+
+#skills .row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#skills .col-md-4 {
+  background-color: #b8bcc0; /* Slightly lighter background for each column */
+  border-radius: 8px; /* Rounded corners */
+  padding: 2rem; /* Padding inside each column */
+  margin: 1rem; /* Margin around each column */
+  transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition for effects */
+  box-shadow: 0 4px 8px rgba(66, 11, 11, 0.2); /* Shadow for depth */
+}
+
+#skills .col-md-4:hover {
+  transform: translateY(-10px); /* Slight lift effect on hover */
+  box-shadow: 0 8px 16px rgba(103, 10, 10, 0.3); /* Stronger shadow on hover */
+}
+
+#skills h4 {
+  font-size: 1.5rem; /* Font size for section headings */
+  font-weight: bold;
+  margin-bottom: 1rem; /* Space below headings */
+  color: #83173b; /* Blue color for headings */
+}
+
+#skills ul {
+  list-style: none; /* Remove default list styling */
+  padding: 0; /* Remove padding */
+}
+
+#skills ul li {
+  font-size: 1.2rem; /* Font size for list items */
+  margin-bottom: 0.5rem; /* Space below each item */
+  position: relative; /* For positioning pseudo-elements */
+  padding-left: 1.5rem; /* Space for bullet */
+}
+
+#skills ul li::before {
+  content: '\2022'; /* Bullet symbol */
+  color: #174e8c; /* Blue color for bullet */
+  font-size: 1.5rem; /* Size of the bullet */
+  position: absolute; /* Position the bullet */
+  left: 0; /* Align to the left */
+  top: 0; /* Align to the top */
+}
+
+@media (max-width: 768px) {
+  #skills .row {
+    flex-direction: column;
+  }
+
+  #skills .col-md-4 {
+    margin-bottom: 1rem;
+  }
+}
+/* Contact Section Styling */
+#contact {
+  background-color: #f8f9fa; /* Light background color */
+  padding-top: 5rem; /* Space for fixed navbar */
+}
+
+#contact h2 {
+  font-size: 2.5rem; /* Larger font size for the section title */
+  font-weight: bold;
+  color: #333; /* Dark color for the title */
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center; /* Center icons horizontally */
+  gap: 1rem; /* Space between icons */
+}
+
+.social-icon {
+  font-size: 2rem; /* Large size for icons */
+  color: #333; /* Dark color for icons */
+  transition: color 0.3s, transform 0.3s; /* Smooth transitions */
+  text-decoration: none; /* Remove underline from links */
+}
+
+.social-icon:hover {
+  color: #007bff; /* Change color on hover */
+  transform: scale(1.1); /* Slightly enlarge on hover */
+}
+
+.social-icon:active {
+  color: #0056b3; /* Darker color when clicked */
+  transform: scale(1); /* Reset size when clicked */
+}
+/* Navbar Styling */
+.navbar-nav .nav-link {
+  padding: 0.5rem 1rem; /* Adjust padding for better alignment */
+  font-size: 1rem; /* Font size */
+  color: #fff; /* Default color */
+}
+
+.navbar-nav .nav-link:hover {
+  color: #007bff; /* Change color on hover */
+}
+
+/* Social Media Icons Styling */
+.social-icon {
+  font-size: 1.5rem; /* Adjust icon size */
+  margin-left: 1rem; /* Space between icons */
+}
+
+.navbar-nav .social-icon {
+  font-size: 1.5rem; /* Icon size */
+  color: #fff; /* Icon color */
+}
+
+.navbar-nav .social-icon:hover {
+  color: #007bff; /* Icon color on hover */
+}
+/* Footer Styling */
+footer {
+  background-color: #343a40; /* Dark background */
+  color: #ffffff; /* White text */
+  padding: 2rem 0; /* Padding top and bottom */
+  text-align: center; /* Center text */
+}
+
+footer p {
+  margin-bottom: 0.5rem; /* Space between lines */
+}
+
+footer a {
+  color: #17a2b8; /* Link color */
+  text-decoration: none; /* Remove underline */
+}
+
+footer a:hover {
+  text-decoration: underline; /* Underline on hover */
+}
+
+footer .fas.fa-heart {
+  color: #e25555; /* Heart color */
+  margin: 0 0.2rem; /* Space around heart */
+}
+
+
+/* Navbar Styling */
+header {
+  z-index: 1000; /* Ensure the navbar is on top of other elements */
+}
+
+.navbar {
+  padding: 0.5rem 1rem;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.navbar-nav .nav-link {
+  color: #ffffff; /* White text */
+  padding: 0.5rem 1rem;
+  transition: background-color 0.3s, color 0.3s;
+  cursor: pointer; /* Show hand cursor on hover */
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus {
+  background-color: #007bff; /* Blue background on hover */
+  color: #ffffff; /* White text on hover */
+  border-radius: 5px;
+}
+
+.navbar-nav .nav-link.active {
+  background-color: #0056b3; /* Darker blue for active link */
+  color: #ffffff;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,..."); /* Custom icon if needed */
+}
+
+/* Hero Section Styling */
+#hero {
+  height: 40vh; /* Full viewport height */
+  background-color: #f8f9fa; /* Light background color */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-title {
+  font-size: 3rem; /* Large font size for main title */
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #333; /* Dark text color */
+}
+
+.hero-description {
+  font-size: 2rem; /* Slightly smaller font size for description */
+  font-weight: 300; /* Light weight for description */
+  color: #555; /* Lighter text color */
+}
+
+/* Profile Image Styling */
+.profile-img {
+  width: 100px; /* Adjust width to your desired medium size */
+  height: 100px; /* Keep height proportional to width */
+  object-fit: cover; /* Ensure the image covers the set dimensions */
+}
+/* Experience Section Styling */
+#experience {
+  background-color: #f8f9fa; /* Light background color */
+  padding-top: 5rem; /* Space for fixed navbar */
+}
+
+#experience h2 {
+  font-size: 2.5rem; /* Large font size for the section title */
+  font-weight: bold;
+  margin-bottom: 2rem; /* Space below the title */
+  color: #333; /* Dark color for the title */
+}
+
+.timeline {
+  position: relative;
+  padding: 1rem 0;
+  max-width: 800px; /* Limit width for better readability */
+  margin: 0 auto; /* Center horizontally */
+}
+
+.timeline-item {
+  position: relative;
+  padding: 1rem 1rem 1rem 4rem; /* Space for the line */
+  margin-bottom: 2rem; /* Space between timeline items */
+  border-left: 2px solid #007bff; /* Vertical line */
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 1rem;
+  width: 10px;
+  height: 10px;
+  background-color: #007bff; /* Dot color */
+  border-radius: 50%;
+}
+
+.timeline-content {
+  background-color: #ffffff; /* White background for content */
+  border-radius: 8px; /* Rounded corners */
+  padding: 1.5rem; /* Padding inside the content box */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+  transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition for effects */
+}
+
+.timeline-item:hover .timeline-content {
+  transform: translateY(-5px); /* Lift effect on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+}
+
+.duration {
+  font-size: 1rem; /* Font size for duration */
+  color: #555; /* Light grey color for duration text */
+  margin-bottom: 1rem; /* Space below the duration */
+}
+
+.description {
+  font-size: 1rem; /* Font size for description */
+  color: #666; /* Slightly darker grey color for description text */
+}
