@@ -2,25 +2,25 @@
 <header class="bg-dark text-white fixed-top">
   <nav class="navbar navbar-expand-md navbar-dark container">
     <a class="navbar-brand" href="#">Home</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+    <button (click)="toggleNavbar()" class="navbar-toggler" type="button" >
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
+    <div [ngClass]="{'navbar-collapse': true, 'show': isNavbarVisible}" class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" (click)="scrollToElement('about')">About</a>
+          <a class="nav-link"  (click)="scrollToElement('about'); hideNavbar()">About</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" (click)="scrollToElement('skills')">Skills</a>
+          <a class="nav-link" (click)="scrollToElement('skills'); hideNavbar()">Skills</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" (click)="scrollToElement('experience')">Experience</a>
+          <a class="nav-link" (click)="scrollToElement('experience'); hideNavbar()">Experience</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" (click)="scrollToElement('contact')">Contact</a>
+          <a class="nav-link" (click)="scrollToElement('contact'); hideNavbar()">Contact</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" (click)="confirmDownload()">Resume</a>
+          <a class="nav-link" (click)="confirmDownload(); " download>Resume</a>
         </li>
 
         <!-- Social Media Icons -->
@@ -45,17 +45,17 @@
 </header>
 
 
-
-<section id="hero" class="d-flex align-items-center bg-light text-center">
+<div (click)="hideNavbar()">
+<section  id="hero" class="d-flex align-items-center bg-light text-center">
   <div class="container">
-    <h1 class="hero-title">Hi, I'm MD OSHAMA</h1>
+    <h1 class="hero-title">MD OSHAMA</h1>
     <p class="hero-description">Full-Stack Developer</p>
   </div>
 </section>
 
 
 
-<section id="about" class="container my-5 py-5">
+<section id="about" (click)="hideNavbar()" class="container my-5 py-5">
   <div class="row">
     <div class="col-md-6">
       <h2>About Me</h2>
@@ -151,6 +151,13 @@
   </div>
 </section>
 
+  <section id="resume" class="bg-light py-5">
+    <div class="container">
+      <h2 class="text-center">Resume</h2>
+
+    </div>
+  </section>
+
 
 
 
@@ -161,3 +168,5 @@
   </div>
 </footer>
 
+
+</div>

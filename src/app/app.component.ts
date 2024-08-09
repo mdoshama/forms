@@ -1,5 +1,5 @@
-import {Component, ElementRef, OnInit} from '@angular/core';
-import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
+import {Component, ElementRef, HostListener, OnInit, } from '@angular/core';
+
 
 @Component({
   selector: 'app-root',
@@ -8,12 +8,14 @@ import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
 })
 export class AppComponent implements OnInit{
   jobs: any[] = [];
-  projects: any[] = [];
+  isNavbarVisible = false;
+
+  constructor(private elementRef: ElementRef,) {}
   ngOnInit(): void {
     this.loadExperience();
-    this.loadProjects();
-
   }
+
+
 
   loadExperience(): void {
     // Example data; replace with real data or fetch from a service
@@ -27,44 +29,48 @@ export class AppComponent implements OnInit{
     ];
   }
 
-  loadProjects(): void {
-    // Example project data; replace with real data or fetch from a service
-    this.projects = [
-      {
-        name: 'Portfolio Website',
-        description: 'A personal portfolio website to showcase my projects and skills.',
-        image: 'assets/portfolio.jpg', // Replace with the path to your image
-        url: 'https://portfolio.example.com'
-      },
-      {
-        name: 'E-Commerce Platform',
-        description: 'A fully-featured e-commerce platform with user authentication and product management.',
-        image: 'assets/ecommerce.jpg', // Replace with the path to your image
-        url: 'https://ecommerce.example.com'
-      },
-      {
-        name: 'Chat Application',
-        description: 'Real-time chat application with features like group chats and notifications.',
-        image: 'assets/chat.jpg', // Replace with the path to your image
-        url: 'https://chat.example.com'
-      }
-      // Add more projects as needed
-    ];
-  }
-  constructor(private elRef: ElementRef) {}
+
+
 
   scrollToElement(elementId: string): void {
-    const element = this.elRef.nativeElement.querySelector(`#${elementId}`);
+    const element = this.elementRef.nativeElement.querySelector(`#${elementId}`);
     element.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
   }
 
 
+
   confirmDownload() {
-    const confirmed = confirm("Do you want to download my resume?");
-    if (confirmed) {
-      window.location.href = 'assets/resume.pdf'; // Adjust path as needed
+      const confirmed = confirm("Do you want to download my resume?");
+      if (confirmed) {
+        const link = document.createElement('a');
+        link.href = 'assets/resume.pdf';
+        link.download = 'resume.pdf';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+
+  }
+
+
+
+  toggleNavbar() {
+    this.isNavbarVisible = !this.isNavbarVisible;
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent) {
+    // Check if the click was outside the component
+    const clickedInside = this.elementRef.nativeElement.contains(event.target);
+    if (!clickedInside) {
+      this.isNavbarVisible = false;
     }
   }
+
+  hideNavbar() {
+    this.isNavbarVisible = false;
+  }
+
 
 
 }
